@@ -1,10 +1,13 @@
-using Hw_2_crud_api;
+using Domain;
+using Domain.Services;
+using Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddDomain();
+builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
-builder.Services.AddSingleton<UserService>();
 
 var app = builder.Build();
 
